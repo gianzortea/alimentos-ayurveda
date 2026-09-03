@@ -54,6 +54,7 @@ Cada alimento carrega:
 | `virya` | potência térmica: `quente` (ushna) ou `frio` (shita) |
 | `gunas` | demais qualidades físicas — a térmica é derivada do virya, nunca duplicada |
 | `dosha` | efeito em Vata, Pitta e Kapha: `-1` pacifica, `0` neutro, `+1` agrava |
+| `icone` | *(opcional)* emoji do próprio alimento; sem ele, herda o da categoria |
 | `dica`  | orientação prática de preparo |
 
 Para acrescentar alimentos, basta adicionar objetos no mesmo formato em `js/alimentos.js` —
@@ -67,6 +68,21 @@ das duas listas e aparece como "depende do contexto", em vez de ser decidida arb
 
 A pontuação de cada alimento soma: +2 por qualidade favorecida, −2 por qualidade a evitar,
 ±1,5 por sabor, e um peso proporcional ao efeito sobre os doshas que o clima já está elevando.
+
+## Ao publicar uma mudança
+
+O GitHub Pages serve os arquivos com `Cache-Control: max-age=600`, então o navegador de quem já
+visitou continua usando o CSS e o JS antigos por até 10 minutos. Por isso os assets em `index.html`
+carregam com um sufixo de versão:
+
+```html
+<link rel="stylesheet" href="css/style.css?v=2">
+<script src="js/app.js?v=2"></script>
+```
+
+**Ao alterar o CSS ou qualquer JS, incremente esse `?v=` nas cinco linhas** — a mudança passa a
+aparecer no mesmo instante para todo mundo. Mexer só no `index.html` não exige nada: o HTML já é
+revalidado a cada visita.
 
 ## Aviso
 
