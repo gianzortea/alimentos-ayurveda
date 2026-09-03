@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="claro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rasoi — Alimentos segundo o Ayurveda</title>
+<meta name="description" content="Escolha alimentos pelas qualidades (gunas) que você busca ou pelo clima do dia, segundo os princípios do Ayurveda.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪔</text></svg>">
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-interno">
+    <div class="marca">
+      <span class="marca-icone">🪔</span>
+      <div>
+        <h1>Rasoi</h1>
+        <p>Alimentos segundo o Ayurveda</p>
+      </div>
+    </div>
+    <div class="topo-acoes">
+      <button id="btnLista" class="btn-topo" title="Minha lista">
+        ★ Minha lista <span id="contadorFav" class="badge">0</span>
+      </button>
+      <button id="btnTema" class="btn-topo icone" title="Alternar tema">🌙</button>
+    </div>
+  </div>
+
+  <nav class="abas">
+    <button class="aba ativa" data-aba="qualidades">🎚️ Por qualidades</button>
+    <button class="aba" data-aba="clima">🌡️ Por clima</button>
+    <button class="aba" data-aba="guia">📖 Guia</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===================== FILTROS TRANSVERSAIS ===================== -->
+  <section class="filtros" aria-label="Filtros">
+    <input type="search" id="busca" placeholder="Buscar alimento…" aria-label="Buscar alimento">
+    <select id="filtroCategoria" aria-label="Categoria"></select>
+    <select id="filtroDosha" aria-label="Dosha a equilibrar">
+      <option value="">Qualquer dosha</option>
+      <option value="vata">Não agravar Vata 🌬️</option>
+      <option value="pitta">Não agravar Pitta 🔥</option>
+      <option value="kapha">Não agravar Kapha 💧</option>
+    </select>
+    <select id="filtroOrdem" aria-label="Ordenar">
+      <option value="relevancia">Por relevância</option>
+      <option value="nome">Por nome</option>
+      <option value="categoria">Por categoria</option>
+    </select>
+    <button id="btnLimpar" class="btn-secundario">Limpar</button>
+  </section>
+
+  <!-- ========================= PAINEL QUALIDADES ===================== -->
+  <section class="painel" data-painel="qualidades">
+
+    <div class="intro">
+      <h2>Que qualidades você procura?</h2>
+      <p>No Ayurveda cada alimento carrega qualidades físicas — os <b>gunas</b>. Elas vêm em pares opostos:
+      um alimento é pesado <i>ou</i> leve, oleoso <i>ou</i> seco. Escolha o que você quer levar ao corpo
+      e a lista se monta sozinha.</p>
+    </div>
+
+    <div id="chipsQualidades" class="grade-pares"></div>
+
+    <details class="avancado">
+      <summary>Refinar por sabor (rasa)</summary>
+      <p class="ajuda">Os seis sabores agem antes mesmo da digestão. Selecionar um sabor filtra os alimentos
+      em que ele predomina.</p>
+      <div id="chipsRasas" class="linha-chips"></div>
+    </details>
+
+    <div class="modo">
+      <label><input type="radio" name="modo" id="modoTodas" value="todas" checked> Reunir <b>todas</b> as qualidades</label>
+      <label><input type="radio" name="modo" value="qualquer"> Ter <b>qualquer uma</b> delas</label>
+    </div>
+
+    <div id="resumoQualidades" class="resumo"></div>
+    <div id="resultadosQualidades" class="grade-cards"></div>
+  </section>
+
+  <!-- ============================ PAINEL CLIMA ======================= -->
+  <section class="painel" data-painel="clima" hidden>
+
+    <div class="intro">
+      <h2>Como está o tempo hoje?</h2>
+      <p>O princípio é simples e antigo: <b>o semelhante aumenta o semelhante, o oposto equilibra</b>.
+      Um dia quente e seco já traz calor e secura ao corpo — o prato precisa devolver frescor e untuosidade.</p>
+    </div>
+
+    <div id="chipsEstacoes" class="linha-chips estacoes"></div>
+
+    <div class="controles-clima">
+      <label class="controle">
+        <span>Temperatura <b id="valTemp">33°C</b></span>
+        <input type="range" id="sliderTemp" min="-5" max="45" step="1" value="33">
+        <small>frio · ameno · quente</small>
+      </label>
+      <label class="controle">
+        <span>Umidade do ar <b id="valUmid">25%</b></span>
+        <input type="range" id="sliderUmid" min="0" max="100" step="5" value="25">
+        <small>seco · equilibrado · úmido</small>
+      </label>
+      <label class="controle vento">
+        <input type="checkbox" id="checkVento">
+        <span>Dia ventoso ou de tempo instável</span>
+        <small>vento acrescenta as qualidades móvel e seca</small>
+      </label>
+    </div>
+
+    <div id="diagnosticoClima" class="diagnostico"></div>
+
+    <div class="cabecalho-resultados">
+      <h3 id="tituloRecomendados" class="titulo-secao">Coma isto</h3>
+      <label class="opcao-agrupar">
+        <input type="checkbox" id="checkAgrupar" checked> Agrupar por categoria
+      </label>
+    </div>
+    <div id="resultadosClima"></div>
+
+    <div id="blocoEvitar" class="bloco-evitar">
+      <div class="bloco-evitar-topo">
+        <h3 id="tituloEvitar" class="titulo-secao">Modere ou evite</h3>
+        <button id="btnEvitar" class="btn-secundario">Mostrar lista</button>
+      </div>
+      <div id="resultadosEvitar"></div>
+    </div>
+  </section>
+
+  <!-- ============================= PAINEL GUIA ======================= -->
+  <section class="painel" data-painel="guia" hidden>
+
+    <div class="intro">
+      <h2>O vocabulário</h2>
+      <p>Três camadas descrevem qualquer alimento no Ayurveda: as <b>qualidades</b> que ele carrega,
+      o <b>sabor</b> que apresenta e o <b>efeito</b> que produz nos três doshas.</p>
+    </div>
+
+    <h3 class="titulo-secao">As qualidades — gunas</h3>
+    <p class="ajuda">Vinte qualidades organizadas em dez pares opostos descrevem toda a matéria.
+    Clique em qualquer uma no painel de clima para buscar alimentos que a contenham.</p>
+    <div id="guiaQualidades" class="grade-verbetes"></div>
+
+    <h3 class="titulo-secao">Os seis sabores — rasas</h3>
+    <p class="ajuda">Cada sabor nasce de dois elementos e move os doshas numa direção previsível.
+    Uma refeição completa contém os seis.</p>
+    <div id="guiaRasas" class="grade-verbetes"></div>
+
+    <h3 class="titulo-secao">Os três doshas</h3>
+    <p class="ajuda">Doshas são combinações de qualidades. Quando o clima, a comida e a rotina somam
+    as mesmas qualidades que um dosha já tem, ele sai do lugar.</p>
+    <div id="guiaDoshas" class="grade-verbetes"></div>
+
+    <div class="principios">
+      <h3>Três regras que resolvem quase tudo</h3>
+      <ol>
+        <li><b>O semelhante aumenta, o oposto equilibra.</b> Calor sobre calor inflama; frescor sobre calor acalma.</li>
+        <li><b>O agni decide.</b> Nenhum alimento é bom se o fogo digestivo não der conta dele. Comida quente,
+        cozida e temperada digere melhor que crua e gelada.</li>
+        <li><b>A dose e a hora importam mais que a lista.</b> A mesma manga é remédio numa tarde de outono
+        e problema num verão abafado.</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <p><b>Rasoi</b> — 135 alimentos classificados por qualidade, sabor, potência térmica e efeito sobre os doshas.</p>
+  <p class="aviso">Conteúdo educativo, baseado em princípios clássicos do Ayurveda. Não substitui avaliação
+  médica ou nutricional individual, especialmente em caso de doença, gestação ou uso de medicamentos.</p>
+</footer>
+
+<!-- ============================== DIÁLOGOS ============================== -->
+<dialog id="detalhe" class="modal">
+  <button id="fecharDetalhe" class="fechar" aria-label="Fechar">×</button>
+  <div id="detalheConteudo"></div>
+</dialog>
+
+<dialog id="lista" class="modal">
+  <button id="fecharLista" class="fechar" aria-label="Fechar">×</button>
+  <h2 class="modal-titulo">★ Minha lista</h2>
+  <div id="conteudoLista"></div>
+  <footer class="modal-rodape">
+    <button id="btnCopiar" class="btn-primario">Copiar lista</button>
+    <button id="btnEsvaziar" class="btn-secundario">Esvaziar</button>
+  </footer>
+</dialog>
+
+<script src="js/data.js"></script>
+<script src="js/alimentos.js"></script>
+<script src="js/clima.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
