@@ -48,6 +48,11 @@ function gunasDe(alimento) {
   return [alimento.virya].concat(alimento.gunas);
 }
 
+/** Emoji do próprio alimento quando existe um exato; senão, o da categoria. */
+function iconeDe(alimento) {
+  return alimento.icone || CATEGORIAS[alimento.cat].icone;
+}
+
 function normalizar(txt) {
   return (txt || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 }
@@ -228,7 +233,7 @@ function cardAlimento(a, extra) {
   return '<article class="card" data-alimento="' + esc(a.nome) + '">' +
     '<header class="card-topo">' +
       '<div class="card-id">' +
-        '<span class="card-icone">' + CATEGORIAS[a.cat].icone + '</span>' +
+        '<span class="card-icone">' + iconeDe(a) + '</span>' +
         '<div><h3>' + esc(a.nome) + '</h3>' +
         '<p class="card-cat">' + esc(CATEGORIAS[a.cat].nome) + '</p></div>' +
       '</div>' + selo +
@@ -512,7 +517,7 @@ function renderFavoritos() {
       catAtual = a.cat;
       html += '<h4 class="lista-cat">' + CATEGORIAS[a.cat].icone + ' ' + esc(CATEGORIAS[a.cat].nome) + '</h4><ul class="lista-itens">';
     }
-    html += '<li><span>' + esc(a.nome) + '</span>' +
+    html += '<li><span>' + iconeDe(a) + '  ' + esc(a.nome) + '</span>' +
             '<button class="btn-x" data-remover="' + esc(a.nome) + '" title="Remover">×</button></li>';
   });
   html += '</ul>';
@@ -544,7 +549,7 @@ function abrirDetalhe(nome) {
 
   $('#detalheConteudo').innerHTML =
     '<header class="detalhe-topo">' +
-      '<span class="detalhe-icone">' + CATEGORIAS[a.cat].icone + '</span>' +
+      '<span class="detalhe-icone">' + iconeDe(a) + '</span>' +
       '<div><h2>' + esc(a.nome) + '</h2><p>' + esc(CATEGORIAS[a.cat].nome) + '</p></div>' +
     '</header>' +
 
