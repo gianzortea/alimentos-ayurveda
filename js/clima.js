@@ -1,18 +1,18 @@
 /* ==========================================================================
-   RASOI — Motor climático
+   RASOI - Motor climático
    --------------------------------------------------------------------------
-   Princípio: "samanya vishesha siddhanta" — o semelhante aumenta o
+   Princípio: "samanya vishesha siddhanta", o semelhante aumenta o
    semelhante, o oposto reduz. O clima é um conjunto de qualidades que entra
    no corpo. Para equilibrar, come-se o oposto do que o ambiente oferece.
    ========================================================================== */
 
 const ESTACOES = [
   { id: 'verao-seco',      nome: 'Verão seco',        icone: '🏜️', temp: 33, umid: 25, vento: false,
-    nota: 'Calor forte com ar ressecado — o clima que mais desidrata.' },
+    nota: 'Calor forte com ar ressecado, o clima que mais desidrata.' },
   { id: 'verao-umido',     nome: 'Verão abafado',     icone: '🌴', temp: 31, umid: 85, vento: false,
     nota: 'Calor tropical com umidade alta: peso, moleza e digestão lenta.' },
   { id: 'outono-ventoso',  nome: 'Outono ventoso',    icone: '🍂', temp: 20, umid: 35, vento: true,
-    nota: 'Vento, secura e temperatura instável — a estação de Vata.' },
+    nota: 'Vento, secura e temperatura instável - a estação de Vata.' },
   { id: 'inverno-seco',    nome: 'Inverno seco',      icone: '❄️', temp: 9,  umid: 30, vento: true,
     nota: 'Frio cortante e ar seco: rigidez, pele áspera, articulações duras.' },
   { id: 'inverno-umido',   nome: 'Inverno chuvoso',   icone: '🌧️', temp: 10, umid: 85, vento: false,
@@ -20,7 +20,7 @@ const ESTACOES = [
   { id: 'primavera',       nome: 'Primavera',         icone: '🌸', temp: 21, umid: 75, vento: false,
     nota: 'O Kapha acumulado no inverno derrete: alergias e peso matinal.' },
   { id: 'temperado',       nome: 'Ameno e equilibrado', icone: '🌤️', temp: 22, umid: 55, vento: false,
-    nota: 'Clima neutro — a hora de comer segundo a sua constituição, não o clima.' }
+    nota: 'Clima neutro - a hora de comer segundo a sua constituição, não o clima.' }
 ];
 
 /* Regras: cada eixo do clima gera qualidades a favorecer e a evitar. */

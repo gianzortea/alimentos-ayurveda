@@ -1,5 +1,5 @@
 /* ==========================================================================
-   RASOI — Aplicação
+   RASOI - Aplicação
    ========================================================================== */
 
 const $  = function (s, ctx) { return (ctx || document).querySelector(s); };
@@ -78,7 +78,7 @@ function passaFiltrosBase(a) {
   return true;
 }
 
-/* ===================== MODO 1 — BUSCA POR QUALIDADES ===================== */
+/* ===================== MODO 1 - BUSCA POR QUALIDADES ===================== */
 
 function buscarPorQualidades() {
   const pedidas = Array.from(estado.qualidades);
@@ -130,7 +130,7 @@ function ordenar(lista, chaveRelevancia) {
   }
 }
 
-/* ======================= MODO 2 — BUSCA POR CLIMA ======================== */
+/* ======================= MODO 2 - BUSCA POR CLIMA ======================== */
 
 function pontuarNoClima(a, perfil) {
   const g = gunasDe(a);
@@ -182,7 +182,7 @@ function faixaAfinidade(pct) {
 
 function chipQualidade(q, ativo) {
   return '<button class="chip chip-qual' + (ativo ? ' ativo' : '') + '" data-qual="' + q.id + '" ' +
-         'title="' + esc(q.sans + ' — ' + q.desc) + '">' +
+         'title="' + esc(q.sans + ' - ' + q.desc) + '">' +
          '<span class="chip-nome">' + esc(q.nome) + '</span>' +
          '<span class="chip-sans">' + esc(q.sans) + '</span></button>';
 }
@@ -203,7 +203,7 @@ function renderChipsQualidades() {
 function renderChipsRasas() {
   $('#chipsRasas').innerHTML = RASAS.map(function (r) {
     return '<button class="chip chip-rasa' + (estado.rasas.has(r.id) ? ' ativo' : '') + '" ' +
-           'data-rasa="' + r.id + '" title="' + esc(r.sans + ' (' + r.el + ') — ' + r.desc) + '">' +
+           'data-rasa="' + r.id + '" title="' + esc(r.sans + ' (' + r.el + ') - ' + r.desc) + '">' +
            esc(r.nome) + '</button>';
   }).join('');
 }
@@ -309,9 +309,9 @@ function renderQualidades() {
     const conector = estado.modoQualidade === 'todas' ? ' + ' : ' ou ';
     resumo = '<p class="resumo-busca">Alimentos <b>' + esc(partes.join(conector)) + '</b>' +
              (estado.dosha ? ' que não agravam <b>' + DOSHAS[estado.dosha].nome + '</b>' : '') +
-             ' — <span>' + res.length + ' encontrado' + (res.length === 1 ? '' : 's') + '</span></p>';
+             ' - <span>' + res.length + ' encontrado' + (res.length === 1 ? '' : 's') + '</span></p>';
   } else {
-    resumo = '<p class="resumo-busca">Mostrando toda a base — <span>' + res.length + ' alimentos</span>. ' +
+    resumo = '<p class="resumo-busca">Mostrando toda a base - <span>' + res.length + ' alimentos</span>. ' +
              'Selecione qualidades acima para filtrar.</p>';
   }
 
@@ -319,7 +319,7 @@ function renderQualidades() {
 
   if (!res.length) {
     alvo.innerHTML = vazio('Nenhum alimento reúne todas essas qualidades.',
-      'Tente o modo "qualquer uma" ou remova alguma qualidade — combinações como Pesado + Seco + Penetrante são raras na natureza.');
+      'Tente o modo "qualquer uma" ou remova alguma qualidade, combinações como Pesado + Seco + Penetrante são raras na natureza.');
     return;
   }
 
@@ -386,7 +386,7 @@ function renderClima() {
   ordenar(bons, function (r) { return r.pontos; });
   ruins.sort(function (a, b) { return a.pontos - b.pontos; });
 
-  $('#tituloRecomendados').textContent = 'Coma isto — ' + bons.length + ' alimento' + (bons.length === 1 ? '' : 's');
+  $('#tituloRecomendados').textContent = 'Coma isto - ' + bons.length + ' alimento' + (bons.length === 1 ? '' : 's');
 
   $('#resultadosClima').innerHTML = bons.length
     ? renderGrade(bons, function (r) {
@@ -401,7 +401,7 @@ function renderClima() {
       vazio('Nenhum alimento se destaca com os filtros atuais.', 'Limpe a categoria ou o dosha selecionado.') +
       '</div>';
 
-  $('#tituloEvitar').textContent = 'Modere ou evite — ' + ruins.length + ' alimento' + (ruins.length === 1 ? '' : 's');
+  $('#tituloEvitar').textContent = 'Modere ou evite - ' + ruins.length + ' alimento' + (ruins.length === 1 ? '' : 's');
   $('#resultadosEvitar').innerHTML = estado.mostrarEvitar
     ? (ruins.length
         ? renderGrade(ruins, function (r) {
@@ -445,7 +445,7 @@ function blocoQualidades(titulo, ids, tipo) {
     ids.map(function (id) {
       const q = MAPA_QUALIDADE[id];
       return '<button class="mini-acao" data-usar-qual="' + id + '" title="' +
-             esc(q ? q.sans + ' — ' + q.desc : '') + '">' + esc(nomeQual(id)) + '</button>';
+             esc(q ? q.sans + ' - ' + q.desc : '') + '">' + esc(nomeQual(id)) + '</button>';
     }).join('') + '</div></div>';
 }
 
@@ -530,7 +530,7 @@ function textoDaLista() {
   itens.forEach(function (a) {
     (porCat[a.cat] = porCat[a.cat] || []).push(a.nome);
   });
-  return 'Lista de compras — Rasoi\n\n' + Object.keys(porCat).map(function (c) {
+  return 'Lista de compras - Rasoi\n\n' + Object.keys(porCat).map(function (c) {
     return CATEGORIAS[c].nome + '\n' + porCat[c].map(function (n) { return '- ' + n; }).join('\n');
   }).join('\n\n');
 }
@@ -556,7 +556,7 @@ function abrirDetalhe(nome) {
     '<section class="detalhe-secao">' +
       '<h3>Potência térmica <span>virya</span></h3>' +
       '<p class="virya-' + a.virya + '">' + (a.virya === 'quente' ? '🔥 Quente (ushna)' : '❄️ Fria (shita)') +
-      ' — ' + (a.virya === 'quente'
+      ' - ' + (a.virya === 'quente'
         ? 'aquece o corpo, acende o agni e aumenta a circulação.'
         : 'refresca o corpo, acalma a inflamação e desacelera a digestão.') + '</p>' +
     '</section>' +

@@ -1,11 +1,11 @@
 /* ==========================================================================
-   RASOI — Base de dados ayurvédica de alimentos
+   RASOI - Base de dados ayurvédica de alimentos
    --------------------------------------------------------------------------
    Modelo de cada alimento:
      nome   : nome usual em português
      cat    : categoria (chave de CATEGORIAS)
      rasa   : sabores predominantes (os 6 rasas)
-     virya  : potência térmica — 'quente' (ushna) ou 'frio' (shita)
+     virya  : potência térmica - 'quente' (ushna) ou 'frio' (shita)
      gunas  : qualidades físicas além da térmica (a térmica vem do virya)
      dosha  : efeito sobre cada dosha  -1 = pacifica | 0 = neutro | +1 = agrava
      dica   : orientação prática de preparo/uso

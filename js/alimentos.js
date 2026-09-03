@@ -1,13 +1,13 @@
 /* ==========================================================================
-   RASOI — Base de alimentos
+   RASOI - Base de alimentos
    --------------------------------------------------------------------------
    nome   : nome usual em português
-   icone  : (opcional) emoji do próprio alimento — sem ele, herda o da categoria
+   icone  : (opcional) emoji do próprio alimento - sem ele, herda o da categoria
    cat    : categoria (chave de CATEGORIAS)
    rasa   : sabores predominantes (os 6 rasas)
-   virya  : potência térmica — 'quente' (ushna) ou 'frio' (shita)
+   virya  : potência térmica - 'quente' (ushna) ou 'frio' (shita)
    gunas  : demais qualidades (a térmica é derivada do virya no código)
-   dosha  : efeito sobre cada dosha — -1 pacifica | 0 neutro | +1 agrava
+   dosha  : efeito sobre cada dosha, -1 pacifica | 0 neutro | +1 agrava
    dica   : orientação prática de preparo e uso
    ========================================================================== */
 
@@ -208,7 +208,7 @@ const ALIMENTOS = [
     dica: 'Gordura refrescante: das melhores coisas para Pitta em dias quentes.' },
   { nome: 'Coco fresco', icone: '🥥', cat: 'fruta', rasa: ['doce'], virya: 'frio', gunas: ['pesado','oleoso','macio'],
     dosha: { vata: -1, pitta: -1, kapha: 1 },
-    dica: 'Refrigerante e nutritivo ao mesmo tempo — raro e precioso no calor seco.' },
+    dica: 'Refrigerante e nutritivo ao mesmo tempo, raro e precioso no calor seco.' },
   { nome: 'Água de coco', icone: '🥥', cat: 'fruta', rasa: ['doce'], virya: 'frio', gunas: ['liquido','leve','claro'],
     dosha: { vata: -1, pitta: -1, kapha: 0 },
     dica: 'Repositor natural. Beba em temperatura ambiente, nunca gelada.' },
@@ -250,7 +250,7 @@ const ALIMENTOS = [
     dica: 'Muito adstringente pelas sementes. Prefira a polpa bem madura.' },
   { nome: 'Caqui', cat: 'fruta', rasa: ['doce','adstringente'], virya: 'frio', gunas: ['pesado','macio'],
     dosha: { vata: 0, pitta: -1, kapha: 1 },
-    dica: 'Só quando muito maduro — verde, a adstringência é agressiva.' },
+    dica: 'Só quando muito maduro - verde, a adstringência é agressiva.' },
 
   /* ------------------------------ LATICÍNIOS ------------------------------ */
   { nome: 'Leite morno com especiarias', cat: 'laticinio', rasa: ['doce'], virya: 'frio', gunas: ['pesado','oleoso','liquido','macio'],
@@ -302,7 +302,7 @@ const ALIMENTOS = [
     dica: 'Moída na hora e com água morna, é laxativo suave para Vata.' },
   { nome: 'Chia', cat: 'oleaginosa', rasa: ['doce','adstringente'], virya: 'frio', gunas: ['oleoso','viscoso','pesado'],
     dosha: { vata: -1, pitta: -1, kapha: 0 },
-    dica: 'Hidratada forma gel que lubrifica os intestinos. Seca, resseca — sempre demolhe.' },
+    dica: 'Hidratada forma gel que lubrifica os intestinos. Seca, resseca - sempre demolhe.' },
   { nome: 'Amendoim', icone: '🥜', cat: 'oleaginosa', rasa: ['doce'], virya: 'quente', gunas: ['pesado','oleoso','denso'],
     dosha: { vata: -1, pitta: 1, kapha: 1 },
     dica: 'O mais pesado do grupo e o que mais forma ama. Consumo moderado.' },
@@ -313,7 +313,7 @@ const ALIMENTOS = [
   /* --------------------------- ÓLEOS E GORDURAS --------------------------- */
   { nome: 'Óleo de gergelim', cat: 'oleo', rasa: ['doce','amargo','adstringente'], virya: 'quente', gunas: ['oleoso','pesado','penetrante','estavel'],
     dosha: { vata: -1, pitta: 1, kapha: 0 },
-    dica: 'O óleo por excelência de Vata. Aquece, penetra e estabiliza — na comida e na pele.' },
+    dica: 'O óleo por excelência de Vata. Aquece, penetra e estabiliza - na comida e na pele.' },
   { nome: 'Óleo de coco', icone: '🥥', cat: 'oleo', rasa: ['doce'], virya: 'frio', gunas: ['oleoso','pesado','macio'],
     dosha: { vata: -1, pitta: -1, kapha: 1 },
     dica: 'O óleo refrescante: primeira escolha para Pitta e para o verão.' },
@@ -372,7 +372,7 @@ const ALIMENTOS = [
     dica: 'Estale as sementes no óleo até pipocarem antes de acrescentar o resto.' },
   { nome: 'Hortelã', cat: 'especiaria', rasa: ['picante','amargo'], virya: 'frio', gunas: ['leve','seco','sutil'],
     dosha: { vata: 0, pitta: -1, kapha: -1 },
-    dica: 'Picante que resfria — combinação rara. Chá de hortelã acalma o calor interno.' },
+    dica: 'Picante que resfria, combinação rara. Chá de hortelã acalma o calor interno.' },
   { nome: 'Manjericão sagrado (tulsi)', cat: 'especiaria', rasa: ['picante','amargo'], virya: 'quente', gunas: ['leve','seco','penetrante','sutil'],
     dosha: { vata: -1, pitta: 1, kapha: -1 },
     dica: 'Erva sagrada para vias respiratórias e clareza mental. Chá diário no frio úmido.' },
@@ -412,7 +412,7 @@ const ALIMENTOS = [
     dica: 'A carne mais leve. Cozida em caldo com especiarias é a forma mais digerível.' },
   { nome: 'Peixe', icone: '🐟', cat: 'animal', rasa: ['doce'], virya: 'quente', gunas: ['pesado','oleoso','viscoso'],
     dosha: { vata: -1, pitta: 1, kapha: 1 },
-    dica: 'Aquece muito. Nunca combine com leite — incompatibilidade clássica (viruddha).' },
+    dica: 'Aquece muito. Nunca combine com leite, incompatibilidade clássica (viruddha).' },
   { nome: 'Carne vermelha', icone: '🥩', cat: 'animal', rasa: ['doce'], virya: 'quente', gunas: ['pesado','oleoso','denso','estavel'],
     dosha: { vata: -1, pitta: 1, kapha: 1 },
     dica: 'Máxima densidade e peso. Reconstrói tecidos, mas é lenta e forma ama facilmente.' },
