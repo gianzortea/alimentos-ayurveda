@@ -71,18 +71,25 @@ A pontuação de cada alimento soma: +2 por qualidade favorecida, −2 por quali
 
 ## Ao publicar uma mudança
 
-O GitHub Pages serve os arquivos com `Cache-Control: max-age=600`, então o navegador de quem já
-visitou continua usando o CSS e o JS antigos por até 10 minutos. Por isso os assets em `index.html`
-carregam com um sufixo de versão:
+O GitHub Pages serve **tudo** com `Cache-Control: max-age=600`, inclusive o `index.html`. Ou seja:
+quem já visitou o site pode continuar vendo a versão antiga por até 10 minutos, e não há como
+encurtar isso — o Pages não deixa configurar os cabeçalhos.
+
+O que dá para evitar é o pior caso: o navegador buscar o HTML novo e mesmo assim reaproveitar o CSS
+e o JS velhos do cache, servindo uma mistura das duas versões. Por isso os assets carregam com
+sufixo de versão:
 
 ```html
 <link rel="stylesheet" href="css/style.css?v=2">
 <script src="js/app.js?v=2"></script>
 ```
 
-**Ao alterar o CSS ou qualquer JS, incremente esse `?v=` nas cinco linhas** — a mudança passa a
-aparecer no mesmo instante para todo mundo. Mexer só no `index.html` não exige nada: o HTML já é
-revalidado a cada visita.
+**Ao alterar o CSS ou qualquer JS, incremente esse `?v=` nas cinco linhas.** O sufixo muda a URL,
+então o navegador é obrigado a baixar o arquivo novo assim que pegar o HTML novo — nunca uma
+metade de cada versão.
+
+Para conferir um deploy sem esperar o cache expirar, acesse com uma query qualquer na ponta:
+`https://gianzortea.github.io/alimentos-ayurveda/?cb=1`.
 
 ## Aviso
 
