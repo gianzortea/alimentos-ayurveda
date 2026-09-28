@@ -63,3 +63,7 @@ const DOSHAS = {
   kapha: { nome: 'Kapha', el: 'Água + Terra', icone: '💧', qualidades: ['pesado','frio','oleoso','macio','estavel','viscoso','denso'],
            desc: 'Pesado, frio, úmido, estável. Governa a estrutura, a lubrificação e a imunidade.' }
 };
+
+/* Deixa o projeto de vídeo (video/) importar estes dados. No navegador
+   `module` não existe e esta linha não faz nada. */
+if (typeof module !== 'undefined') module.exports = { QUALIDADES, RASAS, CATEGORIAS, DOSHAS };

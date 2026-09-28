@@ -441,3 +441,7 @@ const ALIMENTOS = [
     dica: 'Agita Vata e inflama Pitta. Cardamomo e uma gordura suavizam o impacto.' }
 
 ];
+
+/* Deixa o projeto de vídeo (video/) importar estes dados. No navegador
+   `module` não existe e esta linha não faz nada. */
+if (typeof module !== 'undefined') module.exports = { ALIMENTOS };
